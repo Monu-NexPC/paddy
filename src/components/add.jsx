@@ -8,11 +8,11 @@ import db from '../firbase'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Signup({network}) {
+function Signup({network, font}) {
     const loggedStatus = useSelector(e=>e.user.status);
     const navigate= useNavigate();
     const SignUp = async ()=>{
-      if(String(document.getElementById('addPhrase').value) === 'superDuper'){
+      if(String(document.getElementById('addPhrase').value) === ''){
         const q = query(collection(db, "users"), where("userName", "==", document.getElementById('outlined-basic').value));
         const querySnapshot = await getDocs(q);
         if(querySnapshot.docs.map(e => e.data()).length === 0){
@@ -45,7 +45,7 @@ function Signup({network}) {
       autoComplete="off"
     >
       <ToastContainer/>
-        <Typography variant="h5" component="h5" align='center'>Add User To Paddy</Typography>
+        <Typography variant="h5" component="h5" align='center' style={{fontFamily: font.nunito}}>Add User To Paddy</Typography>
       <TextField className="col-12" id="addPhrase" label="Enter Add Phrase" variant="outlined"/>
       <TextField className="col-12" id="outlined-basic" label="Enter Only UserName" variant="outlined"/>
       <Button className="my-1 col-12" variant="outlined" onClick={SignUp}>Let's Go</Button>

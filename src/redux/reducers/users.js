@@ -12,18 +12,19 @@ const userSlice = createSlice({
     name: 'user',
     initialState:{
         data: [],
-        status: false,
-        user: '',
+        status: localStorage.getItem('user')?true:false,
+        user: localStorage.getItem('user')?localStorage.getItem('user'):'',
         category:[],
     },
     reducers:{
         logIN(state, action){
             state.status= true;
             state.user = action.payload[0];
-            //console.log(action.payload[0])
+            localStorage.setItem('user', action.payload[0])
         },
         logOut(state, action){
             state.status = false;
+            localStorage.removeItem('user')
         },
         allCategory(state, action){
             state.category= action.payload;

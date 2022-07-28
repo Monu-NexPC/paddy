@@ -10,6 +10,8 @@ import Offline from "./offline/offline.jsx";
 import useNetwork from './offline/useNetwork';
 import Betatester from "./components/betatesterform.jsx";
 
+import './App.css'
+const fonts =  {"openSans":"'Open Sans', sans-serif","nunito":"'Nunito', sans-serif"}
 
 function App() {
   const networkState = useNetwork();
@@ -17,10 +19,10 @@ function App() {
   return (
     <BrowserRouter>
     {networkState.online && <Navbar />}
-    <Routes>
-      <Route path='/' element={<Login network={networkState.online}/>}/>
-      <Route path='/home' element={<Paddy network={networkState.online}/>}/>
-      <Route path='/signup' element={<Signup network={networkState.online}/>}/>
+    <Routes >
+      <Route path='/' element={<Login network={networkState.online} font={fonts}/>}/>
+      <Route path='/home' element={<Paddy network={networkState.online} />}/>
+      <Route path='/signup' element={<Signup network={networkState.online} font={fonts}/>}/>
       <Route path='/offline' element={<Offline network={networkState.online}/>} />
       <Route path='/signupasbetatester' element={<Betatester network={networkState.online}/>} />
     </Routes>

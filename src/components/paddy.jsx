@@ -1,4 +1,4 @@
-import {  List, ListItem, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemText } from '@mui/material';
 //import IconButton from '@mui/material/IconButton'
 import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import React, {useEffect, useState} from 'react'
@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import db from '../firbase';
 
 import AddData from './adddata';
-import Del, { Copy } from './deldata';
+
+import BasicTabs from './Tabs';
 function Paddy({network}) {
     const loggedStatus = useSelector(e=>e.user.status);
     const user = useSelector(e=>e.user.user);
+    const cat = useSelector(e=>e.user.category);
     const navigate = useNavigate();
     const [notes, setNotes] = useState([]); 
     const getAllNotes =async ()=>{
@@ -31,22 +33,9 @@ function Paddy({network}) {
       }
     },[loggedStatus,network]);
   return (
-    <div >
-        <List className='overflow-auto pb-4' style={{marginBottom: '75px', maxHeight: '75vh'}}>
-        {notes.map((e)=>
-            <ListItem key={e[0]}
-            secondaryAction={
-              <Del id={e[0]} getAllNotes={getAllNotes}/>
-            }
-          >     <Copy data={e[1].data}/>
-            
-            <ListItemText className='text-break'
-              primary={e[1].data}
-             
-            />
-          </ListItem>
-        )}
-        </List>
+    <div>
+      <BasicTabs notes={notes} cats={cat} getAllNotes={getAllNotes}  style={{marginBottom: '75px', maxHeight: '75vh'}}/>
+        
         <AddData user={user} notes={notes} getAllNotes={getAllNotes}/>
     </div>
   )
