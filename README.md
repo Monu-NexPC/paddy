@@ -2,7 +2,7 @@
 A onlinepad notepad made with React on Frontend and Powered By Firebase Backend Services.
 
 ## Features 
-One Click to copy. \n
+One Click to copy. <br >
 One click delete\n
 SPA & PWA \n
 ### Made With React & Firebase
