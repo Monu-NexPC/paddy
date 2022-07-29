@@ -51,10 +51,10 @@ function AddData({user, getAllNotes, notes}) {
     <>
            
     <ToastContainer position="top-right" />
-        <Fab color="primary" aria-label="add" onClick={()=>setOpen(true)} style={{position: 'fixed'}} className="m-5 bottom-0 end-0">
+        <Fab color="primary" aria-label="add" onClick={()=>setOpen(true)} style={{position: 'fixed'}} className="m-2 bottom-0 end-0">
             <Icon>add</Icon>
         </Fab>
-        <Fab color="primary" aria-label="add" onClick={()=>getAllNotes()} style={{position: 'fixed'}} className="m-5 bottom-0 start-0">
+        <Fab color="primary" aria-label="add" onClick={()=>getAllNotes()} style={{position: 'fixed'}} className="m-2 bottom-0 start-0">
             <Icon>refresh</Icon>
         </Fab>
         <Modal

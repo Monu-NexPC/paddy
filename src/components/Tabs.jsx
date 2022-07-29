@@ -21,7 +21,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 1 }}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'} variant={'body2'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -65,7 +65,7 @@ export default function BasicTabs({cats, notes, getAllNotes}) {
         </Tabs>
       </Box>
       {arr.map((a,i)=>(
-        <TabPanel value={value} index={i}>
+        <TabPanel key={i} value={value} index={i}>
             <List>
                 {a.map((e)=>
                 <ListItem key={e[0]} secondaryAction={ <Del id={e[0]} getAllNotes={getAllNotes}/> }>
